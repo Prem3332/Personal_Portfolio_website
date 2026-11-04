@@ -301,6 +301,17 @@ h2 { margin: 0; font-size: clamp(43px, 6.5vw, 84px); font-weight: 500; line-heig
 .dialog-columns p { color: var(--paper-dim); font-size: 12px; line-height: 1.8; }
 .dialog-disclaimer { margin: 34px 0 0; color: var(--muted); font-size: 10px; }
 
+/* New Styles for Dialog Links */
+.dialog-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 26px;
+}
+.dialog-links .button {
+  text-decoration: none;
+}
+
 .js-enabled [data-reveal] { opacity: 0; transform: translateY(19px); transition: opacity .7s ease, transform .7s cubic-bezier(.2,.7,.2,1); }
 .js-enabled [data-reveal].is-visible { opacity: 1; transform: translateY(0); }
 .hero-copy > *, .hero-art > * { animation: enter .75s both; }

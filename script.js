@@ -103,7 +103,14 @@ const projects = {
     summary: "A location-based Android and iOS app that alerts users when they enter a specified radius around a destination, with customizable alerts.",
     meta: ["Android", "iOS", "GPS"],
     idea: "Notify users when they approach a chosen destination within a user-defined radius.",
-    focus: "Location-aware notifications and customizable alert behavior. The implementation framework is not specified in the supplied project brief."
+    focus: "Location-aware notifications and customizable alert behavior. The implementation framework is not specified in the supplied project brief.",
+    links: [
+      {
+        label: "Download APK",
+        href: "downloads/WakeBy-v1.0.apk",
+        download: true
+      }
+    ]
   },
   coolclimate: {
     kicker: "06 / MOBILE · HACKATHON · SEMESTER 5",
@@ -124,12 +131,30 @@ function openProject(project) {
   document.querySelector("#dialog-summary").textContent = project.summary;
   document.querySelector("#dialog-idea").textContent = project.idea;
   document.querySelector("#dialog-focus").textContent = project.focus;
+
   const meta = document.querySelector("#dialog-meta");
   meta.replaceChildren(...project.meta.map((item) => {
     const tag = document.createElement("span");
     tag.textContent = item;
     return tag;
   }));
+
+  // Add links if they exist
+  const linksEl = document.querySelector("#dialog-links");
+  const disclaimerEl = document.querySelector("#dialog-disclaimer");
+
+  if (project.links && project.links.length > 0) {
+    linksEl.innerHTML = project.links.map(link => `
+      <a class="button button-primary" href="${link.href}" ${link.download ? 'download' : 'target="_blank" rel="noopener noreferrer"'}>
+        ${link.label} <span aria-hidden="true">↓</span>
+      </a>
+    `).join('');
+    disclaimerEl.textContent = "Conceptual visual created for this portfolio. The APK is a signed release build; enable 'Install from unknown sources' on Android to run it.";
+  } else {
+    linksEl.innerHTML = '';
+    disclaimerEl.textContent = "Conceptual visual created for this portfolio. No live demo or source link has been supplied.";
+  }
+
   projectDialog.showModal();
   closeDialog.focus();
 }
