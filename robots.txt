@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://prem3332.github.io/Personal_Portfolio_website/sitemap.xml
